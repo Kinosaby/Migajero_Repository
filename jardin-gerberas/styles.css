@@ -1,0 +1,519 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #87CEEB 0%, #98D8E8 50%, #90EE90 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Cielo */
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Sol */
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+    animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 80px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.sun-ray {
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background: linear-gradient(to bottom, #FFD700, transparent);
+    border-radius: 4px;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    animation: rayRotate 8s linear infinite;
+}
+
+.sun-ray:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+.sun-ray:nth-child(2) { transform: translate(-50%, -50%) rotate(90deg); }
+.sun-ray:nth-child(3) { transform: translate(-50%, -50%) rotate(45deg); }
+.sun-ray:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
+
+@keyframes rayRotate {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+/* Nubes */
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    opacity: 0.8;
+    animation: cloudFloat 30s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+}
+
+.cloud-1 {
+    width: 100px;
+    height: 40px;
+    top: 80px;
+    left: -100px;
+}
+
+.cloud-1::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+}
+
+.cloud-1::after {
+    width: 60px;
+    height: 35px;
+    top: -15px;
+    right: 10px;
+}
+
+.cloud-2 {
+    width: 120px;
+    height: 45px;
+    top: 150px;
+    left: -150px;
+    animation-delay: 5s;
+}
+
+.cloud-2::before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 15px;
+}
+
+.cloud-2::after {
+    width: 70px;
+    height: 40px;
+    top: -20px;
+    right: 15px;
+}
+
+.cloud-3 {
+    width: 90px;
+    height: 35px;
+    top: 200px;
+    left: -120px;
+    animation-delay: 10s;
+}
+
+.cloud-3::before {
+    width: 45px;
+    height: 45px;
+    top: -20px;
+    left: 10px;
+}
+
+.cloud-3::after {
+    width: 55px;
+    height: 30px;
+    top: -15px;
+    right: 10px;
+}
+
+@keyframes cloudFloat {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(100vw + 200px));
+    }
+}
+
+/* Mariposas */
+.butterfly {
+    position: absolute;
+    font-size: 2rem;
+    animation: butterflyFly 15s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.butterfly-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.butterfly-2 {
+    top: 40%;
+    left: 70%;
+    animation-delay: 5s;
+}
+
+.butterfly-3 {
+    top: 30%;
+    left: 40%;
+    animation-delay: 10s;
+}
+
+@keyframes butterflyFly {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, -50px) rotate(10deg);
+    }
+    50% {
+        transform: translate(200px, 20px) rotate(-10deg);
+    }
+    75% {
+        transform: translate(100px, 50px) rotate(5deg);
+    }
+}
+
+/* Contenedor del jardín */
+.garden-container {
+    position: relative;
+    z-index: 10;
+    padding: 100px 20px 50px;
+    text-align: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    color: #2d5016;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    animation: titleBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #4a7c2c;
+    margin-bottom: 40px;
+}
+
+/* Jardín */
+.garden {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+/* Gerbera */
+.gerbera {
+    position: relative;
+    width: 150px;
+    height: 300px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: gentleSway 4s ease-in-out infinite;
+}
+
+.gerbera:nth-child(1) { animation-delay: 0s; }
+.gerbera:nth-child(2) { animation-delay: 0.5s; }
+.gerbera:nth-child(3) { animation-delay: 1s; }
+.gerbera:nth-child(4) { animation-delay: 1.5s; }
+.gerbera:nth-child(5) { animation-delay: 2s; }
+
+@keyframes gentleSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+.gerbera:hover {
+    transform: scale(1.1) !important;
+    z-index: 100;
+}
+
+/* Tallo */
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 180px;
+    background: linear-gradient(to bottom, #4CAF50 0%, #2d5016 100%);
+    border-radius: 4px;
+}
+
+/* Hojas */
+.leaf {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background: #4CAF50;
+    border-radius: 50% 0;
+    bottom: 80px;
+}
+
+.leaf-left {
+    left: 20px;
+    transform: rotate(-45deg);
+}
+
+.leaf-right {
+    right: 20px;
+    transform: rotate(45deg) scaleX(-1);
+}
+
+/* Cabeza de la flor */
+.flower-head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+}
+
+/* Pétalos */
+.petal {
+    position: absolute;
+    width: 35px;
+    height: 50px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transition: all 0.3s ease;
+}
+
+/* Posicionar pétalos en círculo */
+.petal:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateY(-40px); }
+.petal:nth-child(2) { transform: translate(-50%, -50%) rotate(30deg) translateY(-40px); }
+.petal:nth-child(3) { transform: translate(-50%, -50%) rotate(60deg) translateY(-40px); }
+.petal:nth-child(4) { transform: translate(-50%, -50%) rotate(90deg) translateY(-40px); }
+.petal:nth-child(5) { transform: translate(-50%, -50%) rotate(120deg) translateY(-40px); }
+.petal:nth-child(6) { transform: translate(-50%, -50%) rotate(150deg) translateY(-40px); }
+.petal:nth-child(7) { transform: translate(-50%, -50%) rotate(180deg) translateY(-40px); }
+.petal:nth-child(8) { transform: translate(-50%, -50%) rotate(210deg) translateY(-40px); }
+.petal:nth-child(9) { transform: translate(-50%, -50%) rotate(240deg) translateY(-40px); }
+.petal:nth-child(10) { transform: translate(-50%, -50%) rotate(270deg) translateY(-40px); }
+.petal:nth-child(11) { transform: translate(-50%, -50%) rotate(300deg) translateY(-40px); }
+.petal:nth-child(12) { transform: translate(-50%, -50%) rotate(330deg) translateX(35px); }
+
+/* Centro de la flor */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background: radial-gradient(circle, #654321 0%, #4a2d0f 100%);
+    border-radius: 50%;
+    box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* Colores de gerberas */
+.gerbera-pink .petal {
+    background: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%);
+    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.4);
+}
+
+.gerbera-orange .petal {
+    background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+    box-shadow: 0 2px 8px rgba(255, 140, 0, 0.4);
+}
+
+.gerbera-yellow .petal {
+    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.gerbera-red .petal {
+    background: linear-gradient(135deg, #DC143C 0%, #FF6347 100%);
+    box-shadow: 0 2px 8px rgba(220, 20, 60, 0.4);
+}
+
+.gerbera-purple .petal {
+    background: linear-gradient(135deg, #9370DB 0%, #BA55D3 100%);
+    box-shadow: 0 2px 8px rgba(147, 112, 219, 0.4);
+}
+
+/* Efecto al hacer clic */
+.gerbera.blooming .flower-head {
+    animation: bloom 0.6s ease-out;
+}
+
+@keyframes bloom {
+    0% {
+        transform: translateX(-50%) scale(0.8);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.3);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.gerbera.blooming .petal {
+    filter: brightness(1.3);
+}
+
+/* Panel de información */
+.info-panel {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 50px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.info-panel h2 {
+    color: #2d5016;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.info-panel p {
+    color: #4a7c2c;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.color-count {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.count-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d5016;
+    padding: 10px 20px;
+    background: rgba(144, 238, 144, 0.3);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.count-item:hover {
+    transform: translateY(-5px);
+    background: rgba(144, 238, 144, 0.5);
+}
+
+/* Pasto */
+.grass {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, #7cb342 0%, #558b2f 100%);
+    z-index: 5;
+}
+
+.grass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        #7cb342 5px,
+        #7cb342 10px
+    );
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .garden {
+        gap: 20px;
+    }
+    
+    .gerbera {
+        width: 120px;
+        height: 250px;
+    }
+    
+    .flower-head {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .sun {
+        width: 70px;
+        height: 70px;
+        right: 30px;
+    }
+    
+    .info-panel {
+        padding: 20px;
+    }
+    
+    .info-panel h2 {
+        font-size: 1.5rem;
+    }
+    
+    .info-panel p {
+        font-size: 1rem;
+    }
+}

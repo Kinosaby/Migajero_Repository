@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Quieres ser mi San Valentín?</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="card">
+      <div class="sunflower-container">
+        <!-- Girasol animado -->
+        <div class="sunflower" id="sunflower">
+          <!-- Cabeza de flor -->
+          <div class="flower-head">
+            <div class="petals" id="petals"></div>
+            <div class="center">
+              <div class="eyes">
+                <div class="eye"><div class="pupil"></div></div>
+                <div class="eye"><div class="pupil"></div></div>
+              </div>
+              <div class="mouth"></div>
+              <div class="blush left"></div>
+              <div class="blush right"></div>
+            </div>
+          </div>
+          <!-- Tallo -->
+          <div class="stem"></div>
+          <!-- Hojas -->
+          <div class="leaf leaf-left"></div>
+          <div class="leaf leaf-right"></div>
+        </div>
+        <!-- Maceta -->
+        <div class="pot">
+          <div class="pot-rim"></div>
+          <div class="pot-body">
+            <div class="dirt"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="message">¿Quieres ser mi San Valentín? 🥺❤️</p>
+
+      <div class="buttons">
+        <button class="btn btn-yes" onclick="sayYes()">Sí 💕</button>
+        <button class="btn btn-no" id="noBtn">No 😢</button>
+      </div>
+
+      <div class="response" id="response"></div>
+    </div>
+
+    <div class="hearts-bg" id="hearts"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

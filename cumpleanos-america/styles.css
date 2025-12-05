@@ -1,0 +1,613 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Canvas de confeti */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Globos flotantes */
+.balloon {
+    position: fixed;
+    font-size: 4rem;
+    animation: floatBalloon 6s ease-in-out infinite;
+    z-index: 10;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+.balloon-1 {
+    left: 5%;
+    bottom: -100px;
+    animation-delay: 0s;
+    color: #FF69B4;
+}
+
+.balloon-2 {
+    left: 15%;
+    bottom: -100px;
+    animation-delay: 1s;
+    color: #FFD700;
+}
+
+.balloon-3 {
+    left: 80%;
+    bottom: -100px;
+    animation-delay: 2s;
+    color: #87CEEB;
+}
+
+.balloon-4 {
+    left: 90%;
+    bottom: -100px;
+    animation-delay: 0.5s;
+    color: #FF6347;
+}
+
+.balloon-5 {
+    left: 40%;
+    bottom: -100px;
+    animation-delay: 1.5s;
+    color: #98FB98;
+}
+
+.balloon-6 {
+    left: 60%;
+    bottom: -100px;
+    animation-delay: 2.5s;
+    color: #DDA0DD;
+}
+
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-50vh) rotate(10deg);
+    }
+    100% {
+        transform: translateY(-120vh) rotate(-10deg);
+    }
+}
+
+/* Contenedor principal */
+.container {
+    position: relative;
+    z-index: 20;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Sección de encabezado */
+.header-section {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-title {
+    font-size: 5rem;
+    color: #FFD700;
+    text-shadow: 0 5px 20px rgba(255, 215, 0, 0.5),
+                 0 0 40px rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.name-title {
+    font-size: 4rem;
+    background: linear-gradient(135deg, #FF69B4, #FFD700, #87CEEB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    animation: rainbow 3s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(30deg);
+    }
+}
+
+.nickname {
+    font-size: 2.5rem;
+    color: #FFB6C1;
+    font-style: italic;
+    text-shadow: 0 3px 10px rgba(255, 182, 193, 0.7);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Pastel de cumpleaños */
+.cake-container {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.cake {
+    position: relative;
+    width: 250px;
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.candles {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 10;
+    margin-bottom: -10px;
+}
+
+.candle {
+    width: 16px;
+    height: 60px;
+    background: linear-gradient(to bottom, #fff 0%, #f0e68c 50%, #daa520 100%);
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.flame {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: radial-gradient(circle at center, #fff 0%, #ffeb3b 30%, #ff9800 60%, #f44336 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+    }
+    100% {
+        transform: translateX(-50%) scaleY(1.1);
+    }
+}
+
+.cake-layer {
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cake-layer-1 {
+    height: 80px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    z-index: 3;
+}
+
+.cake-layer-1::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.cake-layer-2 {
+    height: 70px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    margin-top: 5px;
+    z-index: 2;
+}
+
+.cake-layer-3 {
+    height: 60px;
+    background: linear-gradient(135deg, #87ceeb 0%, #4682b4 100%);
+    margin-top: 5px;
+    z-index: 1;
+}
+
+/* Fecha */
+.date-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.date-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 50px;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: scaleIn 1s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.date-number {
+    display: block;
+    font-size: 6rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.date-month {
+    display: block;
+    font-size: 2rem;
+    color: #764ba2;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Mensaje especial */
+.message-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 700px;
+    margin: 50px auto;
+    border: 5px solid #FFD700;
+    animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-text {
+    font-size: 1.5rem;
+    line-height: 2;
+    color: #764ba2;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Sección de poemas */
+.poems-section {
+    margin: 60px 0;
+}
+
+.poems-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #FFD700;
+    text-shadow: 0 3px 15px rgba(255, 215, 0, 0.5);
+    margin-bottom: 40px;
+}
+
+.poem-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 30px auto;
+    border: 4px solid #FF69B4;
+    position: relative;
+    animation: poemSlideIn 1s ease-out;
+    animation-fill-mode: both;
+}
+
+.poem-card:nth-child(2) { animation-delay: 0.2s; }
+.poem-card:nth-child(3) { animation-delay: 0.4s; }
+.poem-card:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes poemSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.poem-number {
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ffd700 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.5);
+}
+
+.poem-verse {
+    font-size: 1.4rem;
+    line-height: 2;
+    color: #764ba2;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+}
+
+/* Sección de deseos */
+.wishes-section {
+    margin: 60px 0;
+}
+
+.wishes-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #FFD700;
+    text-shadow: 0 3px 15px rgba(255, 215, 0, 0.5);
+    margin-bottom: 40px;
+}
+
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.wish-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+    animation-fill-mode: both;
+}
+
+.wish-card:nth-child(1) { animation-delay: 0.1s; }
+.wish-card:nth-child(2) { animation-delay: 0.2s; }
+.wish-card:nth-child(3) { animation-delay: 0.3s; }
+.wish-card:nth-child(4) { animation-delay: 0.4s; }
+.wish-card:nth-child(5) { animation-delay: 0.5s; }
+.wish-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wish-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.wish-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.wish-text {
+    font-size: 1.2rem;
+    color: #764ba2;
+    font-weight: 600;
+}
+
+/* Botón de celebración */
+.celebration-button {
+    display: block;
+    margin: 60px auto;
+    padding: 25px 60px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ffd700 50%, #87ceeb 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+    transition: all 0.3s ease;
+    animation: buttonPulse 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.celebration-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.celebration-button:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.celebration-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 50px rgba(255, 107, 157, 0.7);
+}
+
+.celebration-button:active {
+    transform: scale(0.95);
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+    }
+    50% {
+        box-shadow: 0 10px 50px rgba(255, 107, 157, 0.8);
+    }
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensaje final */
+.final-message {
+    text-align: center;
+    margin: 60px 0 40px;
+}
+
+.final-message p {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.signature {
+    font-size: 2.5rem;
+    font-style: italic;
+    color: #FFD700;
+    text-shadow: 0 3px 15px rgba(255, 215, 0, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .name-title {
+        font-size: 2.5rem;
+    }
+    
+    .nickname {
+        font-size: 1.8rem;
+    }
+    
+    .cake {
+        transform: scale(0.8);
+    }
+    
+    .date-number {
+        font-size: 4rem;
+    }
+    
+    .date-month {
+        font-size: 1.5rem;
+    }
+    
+    .message-text {
+        font-size: 1.2rem;
+    }
+    
+    .wishes-title {
+        font-size: 2rem;
+    }
+    
+    .wishes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .celebration-button {
+        font-size: 1.3rem;
+        padding: 20px 40px;
+    }
+}

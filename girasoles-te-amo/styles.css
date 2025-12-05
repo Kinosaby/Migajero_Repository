@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, 
+        #0d0d1a 0%, 
+        #1a1a2e 20%, 
+        #2d1f3d 50%, 
+        #3d2a4d 80%, 
+        #1a1a2e 100%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* ========== FONDO ULTRA DETALLADO ========== */
+.bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Resplandor rosa intenso */
+.glow-orbs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse 100% 60% at 50% 100%, rgba(255, 20, 147, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 15% 85%, rgba(255, 105, 180, 0.25) 0%, transparent 45%),
+        radial-gradient(ellipse 70% 40% at 85% 85%, rgba(255, 105, 180, 0.25) 0%, transparent 45%),
+        radial-gradient(ellipse 50% 30% at 50% 70%, rgba(219, 39, 119, 0.2) 0%, transparent 50%);
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+}
+
+/* Corazones flotantes */
+.hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.floating-heart {
+    position: absolute;
+    opacity: 0.2;
+    animation: floatUp 14s linear infinite;
+    filter: blur(1px);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.4) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-100px) scale(1.1) rotate(360deg); opacity: 0; }
+}
+
+/* Corazones grandes de fondo */
+.big-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.big-heart {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.06;
+    filter: blur(3px);
+    animation: pulseHeart 5s ease-in-out infinite;
+}
+
+@keyframes pulseHeart {
+    0%, 100% { transform: scale(1); opacity: 0.06; }
+    50% { transform: scale(1.15); opacity: 0.1; }
+}
+
+/* Estrellas brillantes */
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s ease-in-out infinite;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* ========== CONTENIDO ========== */
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 25px;
+    width: 100%;
+    max-width: 550px;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    color: #ffd700;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.9),
+        0 0 25px rgba(255, 215, 0, 0.6),
+        0 0 50px rgba(255, 215, 0, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+    animation: titleGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { 
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 0 25px rgba(255, 215, 0, 0.6);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.8);
+        transform: scale(1.02);
+    }
+}
+
+/* ========== JARDÍN DE GIRASOLES ========== */
+.garden {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    margin: 10px 0;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+}
+
+.sunflower {
+    position: absolute;
+    transform-origin: bottom center;
+    animation: gentleSway 4s ease-in-out infinite;
+}
+
+@keyframes gentleSway {
+    0%, 100% { transform: rotate(var(--rot, 0deg)); }
+    25% { transform: rotate(calc(var(--rot, 0deg) + 1.5deg)); }
+    50% { transform: rotate(calc(var(--rot, 0deg) + 3deg)); }
+    75% { transform: rotate(calc(var(--rot, 0deg) + 1.5deg)); }
+}
+
+/* Tallo ultra realista */
+.stem {
+    position: absolute;
+    background: linear-gradient(90deg, 
+        #0d3d0d 0%, 
+        #1a5a1a 15%, 
+        #2d7a2d 30%, 
+        #3d9a3d 50%, 
+        #2d7a2d 70%, 
+        #1a5a1a 85%, 
+        #0d3d0d 100%);
+    border-radius: 50%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    box-shadow: 
+        inset -3px 0 6px rgba(0, 0, 0, 0.3),
+        inset 3px 0 6px rgba(255, 255, 255, 0.08),
+        3px 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.stem::before {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    left: 15%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%);
+    border-radius: 50%;
+}
+
+/* Hojas del tallo */
+.leaf-container {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.leaf {
+    position: absolute;
+    background: linear-gradient(135deg, 
+        #0d4d0d 0%, 
+        #1a6a1a 20%, 
+        #2d8a2d 40%, 
+        #3d9a3d 60%, 
+        #2d8a2d 80%, 
+        #1a6a1a 100%);
+    border-radius: 5px 60% 5px 60%;
+    box-shadow: 
+        inset 0 -5px 10px rgba(0, 0, 0, 0.3),
+        inset 0 3px 6px rgba(255, 255, 255, 0.1),
+        3px 5px 10px rgba(0, 0, 0, 0.35);
+}
+
+.leaf::before {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.25), transparent);
+    top: 50%;
+    left: 5%;
+}
+
+.leaf::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    top: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent);
+    border-radius: 5px 60% 0 0;
+}
+
+.leaf-left {
+    transform: rotate(-55deg);
+}
+
+.leaf-right {
+    transform: rotate(55deg) scaleX(-1);
+}
+
+/* Cabeza del girasol ultra realista */
+.flower-head {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.petals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: petalGlow 3s ease-in-out infinite;
+}
+
+@keyframes petalGlow {
+    0%, 100% { filter: brightness(1) saturate(1); }
+    50% { filter: brightness(1.15) saturate(1.1); }
+}
+
+/* Pétalos ultra detallados */
+.petal {
+    position: absolute;
+    background: linear-gradient(to right, 
+        #e65100 0%, 
+        #ff6d00 10%, 
+        #ff8f00 25%, 
+        #ffa726 40%, 
+        #ffca28 60%, 
+        #ffd54f 80%, 
+        #ffeb3b 95%, 
+        #fff176 100%);
+    border-radius: 4px 55% 55% 4px;
+    left: 50%;
+    top: 50%;
+    transform-origin: left center;
+    box-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.25),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.2),
+        inset 0 3px 5px rgba(255, 255, 255, 0.35);
+}
+
+.petal::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    top: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent);
+    border-radius: inherit;
+}
+
+.petal::after {
+    content: '';
+    position: absolute;
+    width: 85%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.25), transparent);
+    top: 50%;
+    left: 8%;
+}
+
+/* Segunda capa de pétalos */
+.petal-inner {
+    position: absolute;
+    background: linear-gradient(to right, 
+        #ff8f00 0%, 
+        #ffb300 30%, 
+        #ffc107 60%, 
+        #ffd54f 100%);
+    border-radius: 3px 50% 50% 3px;
+    left: 50%;
+    top: 50%;
+    transform-origin: left center;
+    box-shadow: 
+        inset 0 -2px 5px rgba(0, 0, 0, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* Centro del girasol ultra realista */
+.center {
+    position: absolute;
+    background: 
+        radial-gradient(circle at 35% 35%, 
+            #a0522d 0%, 
+            #8b4513 20%, 
+            #6d4c41 40%, 
+            #5d4037 60%, 
+            #4e342e 80%, 
+            #3e2723 100%);
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    box-shadow: 
+        inset 0 -10px 20px rgba(0, 0, 0, 0.45),
+        inset 0 5px 10px rgba(255, 255, 255, 0.1),
+        0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Patrón espiral del centro */
+.center::before {
+    content: '';
+    position: absolute;
+    width: 88%;
+    height: 88%;
+    top: 6%;
+    left: 6%;
+    background: 
+        repeating-radial-gradient(circle at 50% 50%,
+            transparent 0px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.15) 2px,
+            rgba(0, 0, 0, 0.15) 3.5px);
+    border-radius: 50%;
+}
+
+/* Brillo del centro */
+.center::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 25%;
+    top: 12%;
+    left: 18%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.15), transparent);
+    border-radius: 50%;
+}
+
+/* Hojas del suelo */
+.ground-leaves {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.ground-leaf {
+    position: absolute;
+    background: linear-gradient(135deg, 
+        #0d4d0d 0%, 
+        #1a6a1a 25%, 
+        #228B22 50%, 
+        #32CD32 75%, 
+        #228B22 100%);
+    border-radius: 5px 60% 5px 60%;
+    box-shadow: 
+        3px 4px 10px rgba(0, 0, 0, 0.4),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* ========== MENSAJE ========== */
+.message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: #ff69b4;
+    text-shadow: 
+        0 0 10px rgba(255, 105, 180, 0.6),
+        0 0 25px rgba(255, 105, 180, 0.4);
+    animation: msgPulse 2.5s ease-in-out infinite;
+    margin-top: 15px;
+    transition: opacity 0.4s;
+}
+
+@keyframes msgPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.9; }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramo de Gerberas</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="particles" id="particles"></div>
+
+    <main class="container">
+      <h1 class="title">🌸 Ramo de Gerberas 🌸</h1>
+      <p class="subtitle">Un bouquet lleno de alegría y color</p>
+
+      <div class="bouquet" id="bouquet"></div>
+
+      <div class="controls">
+        <button class="btn btn-add" onclick="addFlower()">
+          🌼 Agregar Flor
+        </button>
+        <button class="btn btn-shuffle" onclick="shuffleColors()">
+          🎨 Cambiar Colores
+        </button>
+        <button class="btn btn-reset" onclick="reset()">🔄 Reiniciar</button>
+      </div>
+
+      <p class="message" id="message">
+        "Las Gerberas simbolizan la alegría y la pureza."
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
